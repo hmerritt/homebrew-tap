@@ -1,26 +1,26 @@
 class Exifmeta < Formula
   desc "EXIF read/write/remove tool — useful for film photographers"
   homepage "https://github.com/hmerritt/exifmeta"
-  version "1.2.0"
+  version "1.3.0"
 
   if OS.mac? && Hardware::CPU.arm?
-    url "https://github.com/hmerritt/exifmeta/releases/download/1.2.0/exifmeta-1.2.0-macos-arm64-apple-silicon.zip"
-    sha256 "335208c8ead44b4c4af0bc19015a3984f0323f3832adc8733b3e3652bec8b238"
+    url "https://github.com/hmerritt/exifmeta/releases/download/1.3.0/exifmeta-1.3.0-macos-arm64-apple-silicon.zip"
+    sha256 "e5974212d41712ad71a5f7cb972a45891f000e5eaf1e680c12fcc6d942945f48"
   end
 
   if OS.mac? && Hardware::CPU.intel?
-    url "https://github.com/hmerritt/exifmeta/releases/download/1.2.0/exifmeta-1.2.0-macos-amd64-intel.zip"
-    sha256 "94aed33796636fa6316d219eb9ec8c9d368c777a2ce038a04bfd317cc0778ce7"
+    url "https://github.com/hmerritt/exifmeta/releases/download/1.3.0/exifmeta-1.3.0-macos-amd64-intel.zip"
+    sha256 "84c6839f583016e9626d9681bbd2d352408977250e37cce3d705f21ef190d6ff"
   end
 
   if OS.linux? && Hardware::CPU.arm?
-    url "https://github.com/hmerritt/exifmeta/releases/download/1.2.0/exifmeta-1.2.0-linux-arm64.zip"
-    sha256 "9a3e90a5df515ca850f38ebdbb46555cdd46a586af3db1c762cf11da279ec00c"
+    url "https://github.com/hmerritt/exifmeta/releases/download/1.3.0/exifmeta-1.3.0-linux-arm64.zip"
+    sha256 "2fd23b7875debc236c29882c72beb10c7042e83763ea6bdf1375664bff85b7c2"
   end
 
   if OS.linux? && Hardware::CPU.intel?
-    url "https://github.com/hmerritt/exifmeta/releases/download/1.2.0/exifmeta-1.2.0-linux-amd64.zip"
-    sha256 "a8669531b5ed5bd04444f213277d20f61bb8c2651b82c472b7341460290e56e6"
+    url "https://github.com/hmerritt/exifmeta/releases/download/1.3.0/exifmeta-1.3.0-linux-amd64.zip"
+    sha256 "ae813afbb137499d2713831942ff65183fdf5ba47fac1bea52effe20dc5c7a8b"
   end
 
   def install
