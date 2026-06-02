@@ -26,6 +26,12 @@ class Explorer < Formula
     sha256 "cf65c742d9b79c2699e2438631f102e4c82f5fa597ef0375f24aa48c3a5b8401"
   end
 
+  def chmod_executable(path)
+    chmod 0755, path
+  rescue StandardError => e
+    opoo "Could not mark #{path} executable: #{e.message}"
+  end
+
   def install
     if OS.linux?
       if File.directory?("explorer.app")
@@ -37,7 +43,7 @@ class Explorer < Formula
         explorer_app.install "share" if File.directory?("share")
       elsif File.exist?("explorer")
         bin.install "explorer"
-        chmod 0755, bin/"explorer"
+        chmod_executable bin/"explorer"
       else
         odie "Expected explorer.app, bin/lib/share bundle root, or explorer in archive; found: #{Dir.children(".").sort.join(", ")}"
       end
@@ -114,7 +120,7 @@ class Explorer < Formula
       end
     else
       bin.install "explorer"
-      chmod 0755, bin/"explorer"
+      chmod_executable bin/"explorer"
 
       if system "xattr", "-p", "com.apple.quarantine", bin/"explorer", out: File::NULL, err: File::NULL
         system "xattr", "-d", "com.apple.quarantine", bin/"explorer"
