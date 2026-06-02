@@ -1,26 +1,26 @@
 class Explorer < Formula
   desc "File Explorer"
   homepage "https://github.com/hmerritt/explorer"
-  version "0.1.0"
+  version "0.2.0"
 
   if OS.mac? && Hardware::CPU.arm?
-    url "https://releases.mrrtt.me/explorer/0.1.0/explorer-0.1.0-macos-arm64-apple-silicon.zip"
-    sha256 "6a8bac82bba2e1620436f2069a4b943169b24bc1ae19b2e9c2b9af2873fe152f"
+    url "https://releases.mrrtt.me/explorer/0.2.0/explorer-0.2.0-macos-arm64-apple-silicon.zip"
+    sha256 "7787cfea344300ed318139d409a8948432e3e8100f32fa8cc96fc214b5677e8e"
   end
 
   if OS.mac? && Hardware::CPU.intel?
-    url "https://releases.mrrtt.me/explorer/0.1.0/explorer-0.1.0-macos-amd64-intel.zip"
-    sha256 "e90d5100319e8d4b820c62e1eb7a7665daacc98e461f56e7ff10bd3b053f3650"
+    url "https://releases.mrrtt.me/explorer/0.2.0/explorer-0.2.0-macos-amd64-intel.zip"
+    sha256 "4442916499ad85ffae8678ea2d85e68179b761b3248cb14f80da9d05d96b41b0"
   end
 
   if OS.linux? && Hardware::CPU.arm?
-    url "https://releases.mrrtt.me/explorer/0.1.0/explorer-0.1.0-linux-arm64.zip"
-    sha256 "90aa75a515c4a188f98cf0e46af7b79c2579fa759fd90f76446441afd04787c5"
+    url "https://releases.mrrtt.me/explorer/0.2.0/explorer-0.2.0-linux-arm64.zip"
+    sha256 "f085cfaa60775edf76cee46192bacf08634aabf9c6989dc7e05ec8f599095c25"
   end
 
   if OS.linux? && Hardware::CPU.intel?
-    url "https://releases.mrrtt.me/explorer/0.1.0/explorer-0.1.0-linux-amd64.zip"
-    sha256 "5a7f5d7fe3ba8c6de645c911fe28deb8e42bb12182ea0f69bd3dcbd31e25f9a1"
+    url "https://releases.mrrtt.me/explorer/0.2.0/explorer-0.2.0-linux-amd64.zip"
+    sha256 "d46acc85821a3f536fd1e21a2c4801f2a33dcce0ab73663ef39c725c70ef2071"
   end
 
   def install
