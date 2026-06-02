@@ -30,7 +30,19 @@ class Explorer < Formula
     if OS.linux?
       if File.directory?("explorer.app")
         libexec.install "explorer.app"
+      elsif File.exist?("bin/explorer") && File.exist?("bin/explorer.bin")
+        explorer_app = libexec/"explorer.app"
+        explorer_app.install "bin"
+        explorer_app.install "lib" if File.directory?("lib")
+        explorer_app.install "share" if File.directory?("share")
+      elsif File.exist?("explorer")
+        bin.install "explorer"
+        chmod 0755, bin/"explorer"
+      else
+        odie "Expected explorer.app, bin/lib/share bundle root, or explorer in archive; found: #{Dir.children(".").sort.join(", ")}"
+      end
 
+      if File.directory?(libexec/"explorer.app")
         bin.write_exec_script libexec/"explorer.app/bin/explorer"
 
         (share/"applications").install libexec/"explorer.app/share/applications/com.hmerritt.explorer.desktop"
@@ -40,11 +52,6 @@ class Explorer < Formula
           s.gsub!(/^Exec=.*/, "Exec=#{bin}/explorer %F")
           s.gsub!(/^Icon=.*/, "Icon=#{share}/icons/hicolor/512x512/apps/explorer.png")
         end
-      elsif File.exist?("explorer")
-        bin.install "explorer"
-        chmod 0755, bin/"explorer"
-      else
-        odie "Expected explorer.app or explorer in archive; found: #{Dir.children(".").sort.join(", ")}"
       end
     else
       bin.install "explorer"
@@ -60,10 +67,12 @@ class Explorer < Formula
     assert_predicate bin/"explorer", :exist?
 
     if OS.linux?
-      assert_predicate libexec/"explorer.app/bin/explorer", :exist?
-      assert_predicate libexec/"explorer.app/bin/explorer.bin", :exist?
-      assert_predicate share/"applications/com.hmerritt.explorer.desktop", :exist?
-      assert_predicate share/"icons/hicolor/512x512/apps/explorer.png", :exist?
+      if File.directory?(libexec/"explorer.app")
+        assert_predicate libexec/"explorer.app/bin/explorer", :exist?
+        assert_predicate libexec/"explorer.app/bin/explorer.bin", :exist?
+        assert_predicate share/"applications/com.hmerritt.explorer.desktop", :exist?
+        assert_predicate share/"icons/hicolor/512x512/apps/explorer.png", :exist?
+      end
     end
   end
 end
