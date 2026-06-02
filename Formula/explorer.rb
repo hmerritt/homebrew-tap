@@ -28,16 +28,23 @@ class Explorer < Formula
 
   def install
     if OS.linux?
-      libexec.install "explorer.app"
+      if File.directory?("explorer.app")
+        libexec.install "explorer.app"
 
-      bin.write_exec_script libexec/"explorer.app/bin/explorer"
+        bin.write_exec_script libexec/"explorer.app/bin/explorer"
 
-      (share/"applications").install libexec/"explorer.app/share/applications/com.hmerritt.explorer.desktop"
-      (share/"icons/hicolor/512x512/apps").install libexec/"explorer.app/share/icons/hicolor/512x512/apps/explorer.png"
+        (share/"applications").install libexec/"explorer.app/share/applications/com.hmerritt.explorer.desktop"
+        (share/"icons/hicolor/512x512/apps").install libexec/"explorer.app/share/icons/hicolor/512x512/apps/explorer.png"
 
-      inreplace share/"applications/com.hmerritt.explorer.desktop" do |s|
-        s.gsub!(/^Exec=.*/, "Exec=#{bin}/explorer %F")
-        s.gsub!(/^Icon=.*/, "Icon=#{share}/icons/hicolor/512x512/apps/explorer.png")
+        inreplace share/"applications/com.hmerritt.explorer.desktop" do |s|
+          s.gsub!(/^Exec=.*/, "Exec=#{bin}/explorer %F")
+          s.gsub!(/^Icon=.*/, "Icon=#{share}/icons/hicolor/512x512/apps/explorer.png")
+        end
+      elsif File.exist?("explorer")
+        bin.install "explorer"
+        chmod 0755, bin/"explorer"
+      else
+        odie "Expected explorer.app or explorer in archive; found: #{Dir.children(".").sort.join(", ")}"
       end
     else
       bin.install "explorer"
