@@ -121,10 +121,6 @@ class Explorer < Formula
     else
       bin.install "explorer"
       chmod_executable bin/"explorer"
-
-      if system "xattr", "-p", "com.apple.quarantine", bin/"explorer", out: File::NULL, err: File::NULL
-        system "xattr", "-d", "com.apple.quarantine", bin/"explorer"
-      end
     end
   end
 
