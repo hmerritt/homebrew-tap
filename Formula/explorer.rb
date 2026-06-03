@@ -1,5 +1,5 @@
 class Explorer < Formula
-  release_version = "0.4.0"
+  release_version = "0.5.0"
   base_url = "https://releases.mrrtt.me/explorer"
 
   desc "File Explorer"
@@ -8,22 +8,22 @@ class Explorer < Formula
 
   if OS.mac? && Hardware::CPU.arm?
     url "#{base_url}/#{release_version}/explorer-#{release_version}-macos-arm64-apple-silicon.zip"
-    sha256 "12f05f3959efd6a55fcf26b71e3095f3229b6866824abc594a5223dbfdcd2fa9"
+    sha256 "452769a145e592503cbd5f8f011e7542cd42175d4193b7723f47bf97d28291e5"
   end
 
   if OS.mac? && Hardware::CPU.intel?
     url "#{base_url}/#{release_version}/explorer-#{release_version}-macos-amd64-intel.zip"
-    sha256 "a9e521816407c33066e563868aa06b2fd5526543fefd12f63907cdbc61bea847"
+    sha256 "88086e0bc34db91a9f6e22f216dfb40c8d300d3deac4ec154e0b62e939b2aa57"
   end
 
   if OS.linux? && Hardware::CPU.arm?
     url "#{base_url}/#{release_version}/explorer-#{release_version}-linux-arm64.tar.gz"
-    sha256 "7f448c081413a7367ce0d76882403d4e941851fc6dcdbe2079e69548b90d6d8a"
+    sha256 "7b9678cf3278ac4bf4c67e6a4027182a06c0f23ba50a1e1448a78f6c039a20c2"
   end
 
   if OS.linux? && Hardware::CPU.intel?
     url "#{base_url}/#{release_version}/explorer-#{release_version}-linux-amd64.tar.gz"
-    sha256 "ea75801b12d2b82b2fc739b6d66ff62d01e60d602f8c8d3fed138a69e2362814"
+    sha256 "54f95b4d642ee4db94d74c950d9589dffbf6a237bac3fd6c46994d5ff7367a5a"
   end
 
   def chmod_executable(path)
@@ -119,7 +119,15 @@ class Explorer < Formula
         chmod 0755, bin/"explorer-register-desktop"
       end
     else
-      bin.install "explorer"
+      odie "Expected Explorer.app in archive; found: #{Dir.children(".").sort.join(", ")}" unless File.directory?("Explorer.app")
+
+      libexec.install "Explorer.app"
+      (bin/"explorer").write <<~SH
+        #!/usr/bin/env sh
+        set -eu
+
+        exec /usr/bin/open -na "#{opt_libexec}/Explorer.app" --args "$@"
+      SH
       chmod_executable bin/"explorer"
     end
   end
@@ -156,7 +164,16 @@ class Explorer < Formula
   test do
     assert_predicate bin/"explorer", :exist?
 
-    if OS.linux?
+    if OS.mac?
+      assert_predicate libexec/"Explorer.app", :directory?
+      assert_predicate libexec/"Explorer.app/Contents/Info.plist", :exist?
+      assert_predicate libexec/"Explorer.app/Contents/MacOS/explorer", :exist?
+      assert_predicate libexec/"Explorer.app/Contents/Resources/explorer.icns", :exist?
+
+      launcher = (bin/"explorer").read
+      expected_launcher = "/usr/bin/open -na \"#{opt_libexec}/Explorer.app\" --args " + '"$@"'
+      assert_match expected_launcher, launcher
+    elsif OS.linux?
       if File.directory?(libexec/"explorer.app")
         assert_predicate libexec/"explorer.app/bin/explorer", :exist?
         assert_predicate libexec/"explorer.app/bin/explorer.bin", :exist?
