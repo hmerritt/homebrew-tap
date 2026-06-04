@@ -8,22 +8,22 @@ class Explorer < Formula
 
   if OS.mac? && Hardware::CPU.arm?
     url "#{base_url}/#{release_version}/explorer-#{release_version}-macos-arm64-apple-silicon.zip"
-    sha256 "sha256:4635f99da84581fb30a9419ad31c436c0e4edef0fa2b65459e626a40ef7d9521"
+    sha256 "4635f99da84581fb30a9419ad31c436c0e4edef0fa2b65459e626a40ef7d9521"
   end
 
   if OS.mac? && Hardware::CPU.intel?
     url "#{base_url}/#{release_version}/explorer-#{release_version}-macos-amd64-intel.zip"
-    sha256 "sha256:9561084891ea65885d877d67400aadc5ee493577238610b49a8a25d046df0d82"
+    sha256 "9561084891ea65885d877d67400aadc5ee493577238610b49a8a25d046df0d82"
   end
 
   if OS.linux? && Hardware::CPU.arm?
     url "#{base_url}/#{release_version}/explorer-#{release_version}-linux-arm64.tar.gz"
-    sha256 "sha256:43285987f9a83349e23874e07a93e56f9bdf8a63a78d41346478e75a4ac63500"
+    sha256 "43285987f9a83349e23874e07a93e56f9bdf8a63a78d41346478e75a4ac63500"
   end
 
   if OS.linux? && Hardware::CPU.intel?
     url "#{base_url}/#{release_version}/explorer-#{release_version}-linux-amd64.tar.gz"
-    sha256 "sha256:1579a0ec5669fa78d079ea2346519d7ad47039887a9394d247d129556af5e0b3"
+    sha256 "1579a0ec5669fa78d079ea2346519d7ad47039887a9394d247d129556af5e0b3"
   end
 
   def chmod_executable(path)
