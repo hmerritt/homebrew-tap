@@ -1,5 +1,5 @@
 cask "explorer" do
-  release_version = "0.7.0"
+  release_version = "0.8.0"
   base_url = "https://releases.mrrtt.me/explorer"
 
   name "Explorer"
@@ -9,12 +9,12 @@ cask "explorer" do
 
   on_arm do
     url "#{base_url}/#{release_version}/explorer-#{release_version}-macos-arm64-apple-silicon.zip"
-    sha256 "4635f99da84581fb30a9419ad31c436c0e4edef0fa2b65459e626a40ef7d9521"
+    sha256 "f6fdda183e03e44c09e8b45ade7f562bd76f05dc8b2f9065b6352a0e8e7653ac"
   end
 
   on_intel do
     url "#{base_url}/#{release_version}/explorer-#{release_version}-macos-amd64-intel.zip"
-    sha256 "9561084891ea65885d877d67400aadc5ee493577238610b49a8a25d046df0d82"
+    sha256 "00b6bed1eae292672a14bf03fda545b8dcd8cf0d3dab61782e95614dfa4e85a1"
   end
 
   app "Explorer.app"
