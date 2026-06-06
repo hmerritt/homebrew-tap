@@ -18,7 +18,7 @@ class Explorer < Formula
 
   if OS.linux? && Hardware::CPU.arm?
     url "#{base_url}/#{release_version}/explorer-#{release_version}-linux-arm64.tar.gz"
-    sha256 "REPLACE"
+    sha256 "f761c5e3c7cb577bfe76332bd812914b7fa43e38689373cdcff6f1fb1ac7b592"
   end
 
   if OS.linux? && Hardware::CPU.intel?
