@@ -1,26 +1,26 @@
 class AutoExtract < Formula
   desc "Watches your Downloads directory (or any directory) for ZIPs and archives and automatically extracts them for you"
   homepage "https://gitlab.com/mrrttjd/auto-extract"
-  version "1.2.90"
+  version "1.2.97"
 
   if OS.mac? && Hardware::CPU.arm?
-    url "https://releases.mrrtt.me/auto-extract/v1.2.90/auto-extract_1.2.90_darwin_arm64.zip"
-    sha256 "133410699d8b633e3d79a9fb16b5a3aaa89943c41337505ddc5a6456e1b45f5c"
+    url "https://releases.mrrtt.me/auto-extract/v1.2.97/auto-extract_1.2.97_darwin_arm64.zip"
+    sha256 "93639c3bd692ecda7e97a436e2aee877743caf5d88d805bb68509a449a011397"
   end
 
   if OS.mac? && Hardware::CPU.intel?
-    url "https://releases.mrrtt.me/auto-extract/v1.2.90/auto-extract_1.2.90_darwin_amd64.zip"
-    sha256 "2756b732697352026d2e301d1a03655d679a8e6f4d2280fb1eef22bb335cb6c4"
+    url "https://releases.mrrtt.me/auto-extract/v1.2.97/auto-extract_1.2.97_darwin_amd64.zip"
+    sha256 "57f7b7c999e87012ce0d9245128cfc33f2eaa613202f9703b4a7b145dba46e93"
   end
 
   if OS.linux? && Hardware::CPU.arm?
-    url "https://releases.mrrtt.me/auto-extract/v1.2.90/auto-extract_1.2.90_linux_arm64.zip"
-    sha256 "61a16196e82e98437d14925dbbbc3aed02a869fcde33d77aeef887bb5a230fec"
+    url "https://releases.mrrtt.me/auto-extract/v1.2.97/auto-extract_1.2.97_linux_arm64.zip"
+    sha256 "0887adaca8cc0adf2ae460a3c255bfe72b30b716b0fdfe23e12dfb0ace4c0229"
   end
 
   if OS.linux? && Hardware::CPU.intel?
-    url "https://releases.mrrtt.me/auto-extract/v1.2.90/auto-extract_1.2.90_linux_amd64.zip"
-    sha256 "9dbda60c67a4b23dbb1311e6c320a2c78f30e4f3333fd4736c3f33d55c56a31a"
+    url "https://releases.mrrtt.me/auto-extract/v1.2.97/auto-extract_1.2.97_linux_amd64.zip"
+    sha256 "5161c5db02eb14366b04ee46c24c2d1b69384cc1d2b6a24d6f7a639e0fccf579"
   end
 
   def install
