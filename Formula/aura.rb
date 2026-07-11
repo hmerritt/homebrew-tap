@@ -6,7 +6,6 @@ class Aura < Formula
   name "aura"
   desc "Wallpaper manager with image rotation and live Metal shaders"
   homepage "https://github.com/hmerritt/aura"
-  license "MIT"
 
   version release_version
   sha256 release_sha256
