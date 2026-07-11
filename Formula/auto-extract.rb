@@ -1,5 +1,5 @@
 class AutoExtract < Formula
-  release_version = "1.3.100"
+  release_version = "1.4.102"
   base_url = "https://releases.mrrtt.me/auto-extract"
 
   desc "Watches your Downloads directory (or any directory) for ZIPs and archives and automatically extracts them for you"
@@ -8,22 +8,22 @@ class AutoExtract < Formula
 
   if OS.mac? && Hardware::CPU.arm?
     url "#{base_url}/v#{release_version}/auto-extract_#{release_version}_darwin_arm64.zip"
-    sha256 "16b1da4e778ec4d1ea4a3eb86c7b5f04f8848e31de017a37c274a4558d731088"
+    sha256 "562d2b771a2bf450cbf2d91dbf8d1ac8896a3737c5f8e24dd614b94b185aaba0"
   end
 
   if OS.mac? && Hardware::CPU.intel?
     url "#{base_url}/v#{release_version}/auto-extract_#{release_version}_darwin_amd64.zip"
-    sha256 "cfb5f2c173b94f222a86515d68fdedde88e58c6ad8dd177ded90b7db57696c5e"
+    sha256 "a695940550f5ab86a8d48e16c2cbc49d1350168314519fc6ecda46d707d30fd8"
   end
 
   if OS.linux? && Hardware::CPU.arm?
     url "#{base_url}/v#{release_version}/auto-extract_#{release_version}_linux_arm64.zip"
-    sha256 "be038f56d6ffa243bf2f5c1502f3dd42f84ea34758dd933bc7ab324e70ae1016"
+    sha256 "2cd27e019bde753ee0470e0e0812fa23e7508989e7f76ed789a6deebae6be3a6"
   end
 
   if OS.linux? && Hardware::CPU.intel?
     url "#{base_url}/v#{release_version}/auto-extract_#{release_version}_linux_amd64.zip"
-    sha256 "47a5bfdbf590c318c80b374b89d5d148b9e7653c75ff315b0eadb0ac481e4a20"
+    sha256 "4129f5803f027d5da4e23adabf9699693f0c5e232d34b03bf6e07ff24dfd4dd5"
   end
 
   def install
