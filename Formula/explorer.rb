@@ -1,5 +1,5 @@
 class Explorer < Formula
-  release_version = "0.19.0"
+  release_version = "0.20.0"
   base_url = "https://github.com/hmerritt/explorer/releases/download"
   # base_url = "https://releases.mrrtt.me/explorer"
 
@@ -10,22 +10,22 @@ class Explorer < Formula
 
   if OS.mac? && Hardware::CPU.arm?
     url "#{base_url}/#{release_version}/explorer-#{release_version}-macos-arm64-apple-silicon.zip"
-    sha256 "ec2a53a31c0d19a48fa1dd6bbd96710de29c994d3bc24eb969e44a2e3ca264f2"
+    sha256 "8dfe9faac8ec483823f9a39b75471b6cf545eb8e666a4bb09bfba94d296b2b10"
   end
 
   if OS.mac? && Hardware::CPU.intel?
     url "#{base_url}/#{release_version}/explorer-#{release_version}-macos-amd64-intel.zip"
-    sha256 "35561bfc71bd003ac30b61caa7635f0f684440443fca520d91eeca10c2552f2a"
+    sha256 "0e9d55225e2a47612fd3a9e64286df453557c23fd195622c53b8a9808b0f5d86"
   end
 
   if OS.linux? && Hardware::CPU.arm?
     url "#{base_url}/#{release_version}/explorer-#{release_version}-linux-arm64.tar.gz"
-    sha256 "dee6fa81b72dc71162c9f4527a7571d510f9538c4199865fc22cd2215210bf37"
+    sha256 "3b46f037efc690c5b2e020af454f5ec8bbc75db765dbde77304a5d7be34cabde"
   end
 
   if OS.linux? && Hardware::CPU.intel?
     url "#{base_url}/#{release_version}/explorer-#{release_version}-linux-amd64.tar.gz"
-    sha256 "35571ccac822cb2c789a5ea43f8355010edc5a1b1a5749ea2bfe7d99e321890b"
+    sha256 "95e89597c51c76fc1f6ab66277518cf021c26a554e7d1a9a1ceb2950a2ae5623"
   end
 
   def chmod_executable(path)
